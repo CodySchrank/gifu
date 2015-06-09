@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8121.17" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.14"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -18,23 +19,19 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Gifu" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c8Y-41-BaC">
-                                <rect key="frame" x="284" y="45" width="33" height="21"/>
+                                <rect key="frame" x="283" y="35" width="34.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Not the Japanese prefecture." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wsv-cU-WO5">
-                                <rect key="frame" x="225" y="70" width="150" height="14"/>
+                                <rect key="frame" x="223" y="59" width="154" height="13.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" placeholderIntrinsicWidth="450" placeholderIntrinsicHeight="300" translatesAutoresizingMaskIntoConstraints="NO" id="FSz-xF-Xds" customClass="AnimatableImageView" customModule="Gifu">
-                                <rect key="frame" x="24" y="134" width="552" height="325"/>
-                                <color key="backgroundColor" red="0.7725490196" green="0.1764705882" blue="0.1843137255" alpha="1" colorSpace="calibratedRGB"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFY-3J-OXr" customClass="FlatButton" customModule="gifu_demo" customModuleProvider="target">
-                                <rect key="frame" x="275" y="509" width="50" height="50"/>
+                                <rect key="frame" x="275" y="440" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Lmc-xA-WNU"/>
                                     <constraint firstAttribute="width" constant="50" id="eYX-lm-C2V"/>
@@ -47,36 +44,46 @@
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="tZ1-rw-Kbd">
-                                <rect key="frame" x="236" y="467" width="129" height="29"/>
+                                <rect key="frame" x="236" y="85" width="129" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="VXm-pK-heN"/>
+                                    <constraint firstAttribute="height" constant="20" id="EiE-yB-7Nj"/>
                                 </constraints>
                                 <segments>
                                     <segment title="Mugen"/>
                                     <segment title="Nailed It"/>
                                 </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="toggleGIF:" destination="vXZ-lx-hvc" eventType="valueChanged" id="W0R-yI-ahi"/>
                                 </connections>
                             </segmentedControl>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="450" placeholderIntrinsicHeight="300" translatesAutoresizingMaskIntoConstraints="NO" id="FSz-xF-Xds" customClass="AnimatableImageView" customModule="Gifu">
+                                <rect key="frame" x="28" y="125" width="544" height="300"/>
+                                <color key="backgroundColor" red="0.7725490196" green="0.1764705882" blue="0.1843137255" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.24722154438495636" green="0.26659342646598816" blue="0.2988148033618927" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="FSz-xF-Xds" secondAttribute="trailing" constant="8" id="8kQ-x1-WJl"/>
                             <constraint firstAttribute="centerX" secondItem="bFY-3J-OXr" secondAttribute="centerX" id="CNh-OD-Msi"/>
                             <constraint firstItem="FSz-xF-Xds" firstAttribute="top" secondItem="wsv-cU-WO5" secondAttribute="bottom" constant="50" id="I39-Ku-NYc"/>
-                            <constraint firstItem="c8Y-41-BaC" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="25" id="JHy-q1-JuJ"/>
+                            <constraint firstItem="c8Y-41-BaC" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="15" id="JHy-q1-JuJ"/>
                             <constraint firstAttribute="centerX" secondItem="c8Y-41-BaC" secondAttribute="centerX" id="Kc0-P5-KMZ"/>
                             <constraint firstItem="FSz-xF-Xds" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="8" id="O4L-QH-SvV"/>
-                            <constraint firstItem="bFY-3J-OXr" firstAttribute="top" secondItem="FSz-xF-Xds" secondAttribute="bottom" constant="50" id="PKi-91-olI"/>
-                            <constraint firstAttribute="centerX" secondItem="tZ1-rw-Kbd" secondAttribute="centerX" id="QKy-Gl-KPQ"/>
-                            <constraint firstItem="bFY-3J-OXr" firstAttribute="top" secondItem="tZ1-rw-Kbd" secondAttribute="bottom" constant="14" id="Vqv-f1-dnH"/>
+                            <constraint firstItem="bFY-3J-OXr" firstAttribute="top" secondItem="FSz-xF-Xds" secondAttribute="bottom" constant="15" id="PKi-91-olI"/>
                             <constraint firstItem="wsv-cU-WO5" firstAttribute="top" secondItem="c8Y-41-BaC" secondAttribute="bottom" constant="4" id="ZG4-fK-WvN"/>
-                            <constraint firstItem="tZ1-rw-Kbd" firstAttribute="top" secondItem="FSz-xF-Xds" secondAttribute="bottom" constant="8" id="lu2-sK-QNZ"/>
+                            <constraint firstItem="tZ1-rw-Kbd" firstAttribute="centerX" secondItem="wsv-cU-WO5" secondAttribute="centerX" id="k0a-uX-wTH"/>
                             <constraint firstAttribute="centerX" secondItem="FSz-xF-Xds" secondAttribute="centerX" id="oih-yH-vRh"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="bFY-3J-OXr" secondAttribute="bottom" constant="41" id="w4g-Xu-ht2"/>
+                            <constraint firstItem="FSz-xF-Xds" firstAttribute="top" secondItem="tZ1-rw-Kbd" secondAttribute="bottom" constant="20" id="rCw-WR-S02"/>
+                            <constraint firstItem="tZ1-rw-Kbd" firstAttribute="top" secondItem="wsv-cU-WO5" secondAttribute="bottom" constant="12" id="sZx-nK-DOz"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" relation="greaterThanOrEqual" secondItem="bFY-3J-OXr" secondAttribute="bottom" constant="15" id="w4g-Xu-ht2"/>
                             <constraint firstAttribute="centerX" secondItem="wsv-cU-WO5" secondAttribute="centerX" id="yLb-zR-gfU"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="I39-Ku-NYc"/>
+                            </mask>
+                        </variation>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <nil key="simulatedTopBarMetrics"/>
