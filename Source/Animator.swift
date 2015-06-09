@@ -17,7 +17,7 @@ class Animator {
   /// The total number of frames in the GIF.
   private var numberOfFrames = 0
   /// A reference to the original image source.
-  private var imageSource: CGImageSourceRef?
+  private var imageSource: CGImageSourceRef
   /// The index of the current GIF frame.
   private var currentFrameIndex = 0
   /// The index of the current GIF frame from the source.
@@ -32,13 +32,12 @@ class Animator {
 
   /// Is this image animatable?
   var isAnimatable: Bool {
-    return imageSource?.isAnimatedGIF ?? false
+    return imageSource.isAnimatedGIF
   }
 
   /// Returns the number of frames.
   private var frameCount: Int {
-    guard let source = imageSource else { return 0 }
-    return Int(CGImageSourceGetCount(source))
+    return Int(CGImageSourceGetCount(imageSource))
   }
 
   /// Initializes an animator instance from raw GIF image data and an `Animatable` delegate.
@@ -47,8 +46,7 @@ class Animator {
   /// - parameter delegate: An `Animatable` delegate.
   init(data: NSData, size: CGSize, contentMode: UIViewContentMode, framePreloadCount: Int) {
     let options = [String(kCGImageSourceShouldCache): kCFBooleanFalse]
-
-    self.imageSource = CGImageSourceCreateWithData(data, options)
+    self.imageSource = CGImageSourceCreateWithData(data, options) ?? CGImageSourceCreateIncremental(options)
     self.size = size
     self.contentMode = contentMode
     self.maxNumberOfFrames = framePreloadCount
@@ -63,17 +61,16 @@ class Animator {
     currentPreloadIndex = framesToProcess
   }
 
-
   /// Loads a single frame from an image source, resizes it, then returns an `AnimatedFrame`.
   ///
   /// - parameter index: The index of the GIF image source to prepare
   /// - returns: An AnimatedFrame object
   private func prepareFrame(index: Int) -> AnimatedFrame {
-    guard let source = imageSource, let frameImageRef = CGImageSourceCreateImageAtIndex(source, index, nil) else {
+    guard let frameImageRef = CGImageSourceCreateImageAtIndex(imageSource, index, nil) else {
       return AnimatedFrame.null()
     }
 
-    let frameDuration = CGImageSourceGIFFrameDuration(source, index: index)
+    let frameDuration = CGImageSourceGIFFrameDuration(imageSource, index: index)
     let image = UIImage(CGImage: frameImageRef)
     let scaledImage: UIImage?
 
