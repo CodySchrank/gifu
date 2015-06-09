@@ -19,7 +19,7 @@ public class AnimatableImageView: UIImageView {
   /// Prepares the frames using a GIF image file name, without starting the animation.
   /// The file name should include the `.gif` extension.
   ///
-  /// :param: imageName The name of the GIF file. The method looks for the file in the app bundle.
+  /// - parameter imageName: The name of the GIF file. The method looks for the file in the app bundle.
   public func prepareForAnimation(imageNamed imageName: String) {
     let path = NSBundle.mainBundle().bundlePath.stringByAppendingPathComponent(imageName)
     prepareForAnimation <^> NSData(contentsOfFile: path)
@@ -27,7 +27,7 @@ public class AnimatableImageView: UIImageView {
 
   /// Prepares the frames using raw GIF image data, without starting the animation.
   ///
-  /// :param: data GIF image data.
+  /// - parameter data: GIF image data.
   public func prepareForAnimation(imageData data: NSData) {
     image = UIImage(data: data)
     animator = Animator(data: data, size: frame.size, contentMode: contentMode, framePreloadCount: framePreloadCount)
@@ -37,7 +37,7 @@ public class AnimatableImageView: UIImageView {
 
   /// Prepares the frames using a GIF image file name and starts animating the image view.
   ///
-  /// :param: imageName The name of the GIF file. The method looks for the file in the app bundle.
+  /// - parameter imageName: The name of the GIF file. The method looks for the file in the app bundle.
   public func animateWithImage(named imageName: String) {
     prepareForAnimation(imageNamed: imageName)
     startAnimatingGIF()
@@ -45,14 +45,14 @@ public class AnimatableImageView: UIImageView {
 
   /// Prepares the frames using raw GIF image data and starts animating the image view.
   ///
-  /// :param: data GIF image data.
-  public func animateWithImageData(#data: NSData) {
+  /// - parameter data: GIF image data.
+  public func animateWithImageData(data: NSData) {
     prepareForAnimation(imageData: data)
     startAnimatingGIF()
   }
 
   /// Updates the `UIImage` property of the image view if necessary. This method should not be called manually.
-  override public func displayLayer(layer: CALayer!) {
+  override public func displayLayer(layer: CALayer) {
     image = animator?.currentFrame
   }
 

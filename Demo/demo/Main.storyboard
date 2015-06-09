@@ -29,7 +29,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="450" placeholderIntrinsicHeight="300" translatesAutoresizingMaskIntoConstraints="NO" id="FSz-xF-Xds" customClass="AnimatableImageView" customModule="Gifu">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" placeholderIntrinsicWidth="450" placeholderIntrinsicHeight="300" translatesAutoresizingMaskIntoConstraints="NO" id="FSz-xF-Xds" customClass="AnimatableImageView" customModule="Gifu">
                                 <rect key="frame" x="24" y="134" width="552" height="325"/>
                                 <color key="backgroundColor" red="0.7725490196" green="0.1764705882" blue="0.1843137255" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
