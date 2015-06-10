@@ -13,9 +13,9 @@ class Animator {
   /// The content mode to use when resizing
   private let contentMode: UIViewContentMode
   /// Maximum number of frames to load at once
-  private let maxNumberOfFrames: Int
+  private let maxFrameCount: Int
   /// The total number of frames in the GIF.
-  private var numberOfFrames = 0
+  private var frameCount = 0
   /// A reference to the original image source.
   private var imageSource: CGImageSourceRef
   /// The index of the current GIF frame.
@@ -35,11 +35,6 @@ class Animator {
     return imageSource.isAnimatedGIF
   }
 
-  /// Returns the number of frames.
-  private var frameCount: Int {
-    return Int(CGImageSourceGetCount(imageSource))
-  }
-
   /// Initializes an animator instance from raw GIF image data and an `Animatable` delegate.
   ///
   /// - parameter data: The raw GIF image data.
@@ -49,13 +44,14 @@ class Animator {
     self.imageSource = CGImageSourceCreateWithData(data, options) ?? CGImageSourceCreateIncremental(options)
     self.size = size
     self.contentMode = contentMode
-    self.maxNumberOfFrames = framePreloadCount
+    self.maxFrameCount = framePreloadCount
   }
 
   // MARK: - Frames
   /// Loads the frames from an image source, resizes them, then caches them in `animatedFrames`.
   func prepareFrames() {
-    let framesToProcess = min(frameCount, maxNumberOfFrames)
+    frameCount = Int(CGImageSourceGetCount(imageSource))
+    let framesToProcess = min(frameCount, maxFrameCount)
     animatedFrames.reserveCapacity(framesToProcess)
     animatedFrames = (0..<framesToProcess).reduce([]) { $0 + pure(prepareFrame($1)) }
     currentPreloadIndex = framesToProcess
@@ -104,9 +100,9 @@ class Animator {
       currentFrameIndex = ++currentFrameIndex % animatedFrames.count
 
       // Loads the next needed frame for progressive loading
-      if animatedFrames.count < numberOfFrames {
+      if animatedFrames.count < frameCount {
         animatedFrames[lastFrameIndex] = prepareFrame(currentPreloadIndex)
-        currentPreloadIndex = ++currentPreloadIndex % numberOfFrames
+        currentPreloadIndex = ++currentPreloadIndex % frameCount
       }
       return true
     }
